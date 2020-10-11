@@ -64,8 +64,8 @@ def get_reviews_tabiturient(university, uni_idx):
         reviews[i].date = parse_date(date.strip())
         reviews[i].mark = mark_by_url(points)
         reviews[i].like = int(like)
-        reviews[i].id = int(str(trust).split(',')[1].replace("'", ""))
+        reviews[i].orig_id = int(str(trust).split(',')[1].replace("'", ""))
         # print("finding trust for uni" , university, "comment", i, "out of", len(reviews))
-        reviews[i].trust = trust_by_id(reviews[i].id)
+        reviews[i].trust = trust_by_id(reviews[i].orig_id)
         reviews[i].source = 0
     return reviews

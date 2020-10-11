@@ -33,6 +33,6 @@ def get_reviews_edunetwork(university, uni_idx):
         review.date = parse_date(time_text)
         review.text = text
         review.mark = int(opinion_rate)
-        review.orig_id = opinion_id
+        review.orig_id = int(opinion_id)
         reviews.append(review)
     return reviews

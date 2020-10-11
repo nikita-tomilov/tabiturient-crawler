@@ -5,7 +5,7 @@ from repository import *
 from uni_list import *
 
 if __name__ == '__main__':
-    conn, cursor = init("tabiturient.sqlite")
+    conn, cursor = init("db.sqlite")
     for uni_idx in range(0, len(university_list_tabiturient)):
         count = count_for_uni(conn, cursor, uni_idx)
         if count == 0:
@@ -22,6 +22,6 @@ if __name__ == '__main__':
             print("Vuz.edunetwork: Crawled", len(reviews), "for", uni)
 
         else:
-            print("Already crawled", count, "for", uni)
+            print("Already crawled", count, "for", uni_idx)
     close(conn)
     print("done")

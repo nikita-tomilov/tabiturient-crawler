@@ -27,7 +27,7 @@ def insert(conn, cursor, comments=None):
         cursor.execute("""
             INSERT INTO Comment(university, text, rdate, mark, likec, origid, trust, source)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (comment.university, comment.text, comment.date, comment.mark, comment.like, comment.id, comment.trust,
+        """, (comment.university, comment.text, comment.date, comment.mark, comment.like, comment.orig_id, comment.trust,
               comment.source))
     conn.commit()
 

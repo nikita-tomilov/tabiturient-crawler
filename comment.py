@@ -11,7 +11,6 @@ class Comment:
     date = datetime.MINYEAR
     mark = 0
     like = 0
-    id = -1
-    trust = 0.0
     orig_id = -1
+    trust = 0.0
     source = -1

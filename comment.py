@@ -2,9 +2,9 @@ import datetime
 
 
 class Comment:
-    def __init__(self, text, university):
+    def __init__(self, text, uni_idx):
         self.text = text.strip()
-        self.university = university
+        self.university = uni_idx
 
     university = -1
     text = ""

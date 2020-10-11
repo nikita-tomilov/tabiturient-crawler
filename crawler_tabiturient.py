@@ -46,7 +46,7 @@ def get_reviews_tabiturient(university, uni_idx):
     likes = soup.findAll("table", {"class": "like p10like"})
     likes = likes[0::3]
     trusts = soup.findAll("table", {"class": "doverie"})
-    print("Expecting", len(reviews), "for", university)
+    # print("Expecting", len(reviews), "for", university)
     assert len(ratings) == len(reviews)
     assert len(ratings) == len(likes)
     for i in range(0, len(ratings)):
@@ -65,7 +65,7 @@ def get_reviews_tabiturient(university, uni_idx):
         reviews[i].mark = mark_by_url(points)
         reviews[i].like = int(like)
         reviews[i].id = int(str(trust).split(',')[1].replace("'", ""))
-        #print("finding trust for uni" , university, "comment", i, "out of", len(reviews))
+        # print("finding trust for uni" , university, "comment", i, "out of", len(reviews))
         reviews[i].trust = trust_by_id(reviews[i].id)
         reviews[i].source = 0
     return reviews

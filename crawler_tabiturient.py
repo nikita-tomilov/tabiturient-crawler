@@ -33,14 +33,14 @@ def trust_by_id(id):
     return 0.01 * int(percentage.replace("%", ""))
 
 
-def get_reviews(university):
+def get_reviews_tabiturient(university, uni_idx):
     url = "https://tabiturient.ru/ajax/ajsliv.php"
     data = {'vuzid': university, 'limit': 20000000, 'sortby': 3}
     rp = requests.post(url, data=data)
     html = rp.text
     soup = BeautifulSoup(html, 'html.parser')
     reviews = soup.findAll("div", {"class": "font2"})
-    reviews = list(map(lambda review: Comment(review.text, university), reviews))
+    reviews = list(map(lambda review: Comment(review.text, uni_idx), reviews))
     ratings = soup.findAll("div", {"class": "table-cell-4"})
     ratings = ratings[0::2]
     likes = soup.findAll("table", {"class": "like p10like"})
@@ -67,4 +67,5 @@ def get_reviews(university):
         reviews[i].id = int(str(trust).split(',')[1].replace("'", ""))
         #print("finding trust for uni" , university, "comment", i, "out of", len(reviews))
         reviews[i].trust = trust_by_id(reviews[i].id)
+        reviews[i].source = 0
     return reviews

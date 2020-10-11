@@ -7,13 +7,14 @@ def init(dbfilename: str):
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Comment(
             id INTEGER PRIMARY KEY,
-            university VARCHAR(32),
+            university INTEGER,
             text TEXT,
             rdate DATETIME,
             mark INTEGER,
             likec INTEGER,
             origid INTEGER,
-            trust FLOAT
+            trust FLOAT,
+            source INTEGER
         );
     """)
     return conn, cursor
@@ -24,9 +25,10 @@ def insert(conn, cursor, comments=None):
         comments = []
     for comment in comments:
         cursor.execute("""
-            INSERT INTO Comment(university, text, rdate, mark, likec, origid, trust)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (comment.university, comment.text, comment.date, comment.mark, comment.like, comment.id, comment.trust))
+            INSERT INTO Comment(university, text, rdate, mark, likec, origid, trust, source)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (comment.university, comment.text, comment.date, comment.mark, comment.like, comment.id, comment.trust,
+              comment.source))
     conn.commit()
 
 

@@ -1,5 +1,7 @@
 import sqlite3
 
+from comment import Comment
+
 
 def init(dbfilename: str):
     conn = sqlite3.connect(dbfilename)  # или :memory: чтобы сохранить в RAM
@@ -38,6 +40,23 @@ def count_for_uni(conn, cursor, uni):
             """, (uni,))
     rows = cursor.fetchall()
     return rows[0][0]
+
+
+def get_for_uni(conn, cursor, uni):
+    cursor.execute("""
+                SELECT * FROM Comment WHERE university LIKE ?;
+            """, (uni,))
+    rows = cursor.fetchall()
+    ans = []
+    for i in range(0, len(rows)):
+        row = rows[i]
+        text = row[2]
+        uni_idx = row[1]
+        review = Comment(text, uni_idx)
+        review.date = row[3]
+        review.mark = row[4]
+        ans.append(review)
+    return ans
 
 
 def close(conn):

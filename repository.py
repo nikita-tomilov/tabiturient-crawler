@@ -1,6 +1,15 @@
+import locale
 import sqlite3
+import datetime
+import locale
 
 from comment import Comment
+
+
+def parse_date(date):
+    locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
+    result = datetime.datetime.strptime(date, u'%Y-%m-%d %H:%M:%S')
+    return result
 
 
 def init(dbfilename: str):
@@ -29,8 +38,9 @@ def insert(conn, cursor, comments=None):
         cursor.execute("""
             INSERT INTO Comment(university, text, rdate, mark, likec, origid, trust, source)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (comment.university, comment.text, comment.date, comment.mark, comment.like, comment.orig_id, comment.trust,
-              comment.source))
+        """, (
+        comment.university, comment.text, comment.date, comment.mark, comment.like, comment.orig_id, comment.trust,
+        comment.source))
     conn.commit()
 
 
@@ -53,7 +63,7 @@ def get_for_uni(conn, cursor, uni):
         text = row[2]
         uni_idx = row[1]
         review = Comment(text, uni_idx)
-        review.date = row[3]
+        review.date = parse_date(row[3])
         review.mark = row[4]
         ans.append(review)
     return ans

@@ -23,7 +23,10 @@ def get_reviews_edunetwork(university, uni_idx):
     for i in range(0, len(opinions)):
         opinion = opinions[i]
         time_text = opinion.find("time").text
-        opinion_rate = opinion.find("div", {"class": "star-rate"}).text
+        try:
+            opinion_rate = opinion.find("div", {"class": "star-rate"}).text
+        except Exception:
+            opinion_rate = "nulled"
         if opinion_rate == "nulled":
             continue
         opinion_id = opinion.attrs["id"]

@@ -48,7 +48,10 @@ def parse_date(date):
 
 
 def bag_of_words(reviews):
-    os.remove(tmp_all_reviews_file)
+    try:
+        os.remove(tmp_all_reviews_file)
+    except Exception:
+        pass
     for review in reviews:
         write_file(tmp_review_file, review.text)
         os.system(mystem_executable_path + " " + tmp_review_file + " -l >" + tmp_review_mystemed_file)

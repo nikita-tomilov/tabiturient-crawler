@@ -6,8 +6,8 @@ from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 
-from repository import *
-from uni_list import *
+from reviews.repository import *
+from reviews.uni_list import *
 
 nltk.download("stopwords")
 

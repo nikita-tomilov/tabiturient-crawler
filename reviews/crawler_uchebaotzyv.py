@@ -4,7 +4,7 @@ import locale
 import requests
 from bs4 import BeautifulSoup
 
-from comment import Comment
+from reviews.comment import Comment
 
 
 def mark_by_alt(url):

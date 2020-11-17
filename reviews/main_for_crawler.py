@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-from crawler_edunetwork import get_reviews_edunetwork
-from crawler_tabiturient import get_reviews_tabiturient
-from crawler_uchebaotzyv import get_reviews_uchebaotzyv
-from crawler_moeobrazovanie import get_reviews_moeobrazovanie
-from repository import *
-from uni_list import *
+from reviews.crawler_edunetwork import get_reviews_edunetwork
+from reviews.crawler_tabiturient import get_reviews_tabiturient
+from reviews.crawler_uchebaotzyv import get_reviews_uchebaotzyv
+from reviews.crawler_moeobrazovanie import get_reviews_moeobrazovanie
+from reviews.repository import *
+from reviews.uni_list import *
 
 if __name__ == '__main__':
     conn, cursor = init("db.sqlite")

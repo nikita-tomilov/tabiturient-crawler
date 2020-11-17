@@ -1,9 +1,8 @@
-import locale
 import sqlite3
 import datetime
 import locale
 
-from comment import Comment
+from reviews.comment import Comment
 
 
 def parse_date(date):

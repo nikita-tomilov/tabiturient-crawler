@@ -7,7 +7,7 @@ university_list = (
     "МИФИ", "МФТИ", "ВШЭ",
     "ИТМО", "Политех", "ЛЭТИ",
     "УРФУ", "ЮУрГУ", "БФУ им Канта",
-    "ДВФУ", "СибФУ", "НовосибГУ"
+    "ДВФУ", "СибФУ", "НовосибГУ", "ТПУ"
 )
 
 
@@ -58,6 +58,8 @@ def uni_of_interest(uni):
         return university_list[11]
     if "новосибирский гос. ун-т." == uni:  # НГУ Новосибирск (2012-2013)
         return university_list[11]
+    if "томский политехн" in uni:
+        return university_list[12]
     return ""
 
 

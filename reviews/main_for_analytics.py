@@ -5,6 +5,7 @@ from collections import Counter
 
 import nltk
 from nltk.corpus import stopwords
+from nltk import ngrams
 
 from reviews.repository import *
 from reviews.uni_list import *
@@ -47,7 +48,27 @@ def parse_date(date):
     return result
 
 
-def bag_of_words(reviews):
+def ngrams_over_file(sourcefile, n, targetfile):
+    f = open(targetfile, 'w')
+    data_set = read_file(sourcefile)
+    split_it = data_set.split()
+    split_it = list(filter(lambda x: x not in stopwords, split_it))
+    split_it = list(filter(lambda x: len(x) > 2, split_it))
+    counter = Counter(split_it)
+    if n > 1:
+        grams = ngrams(split_it, n)
+        counter = Counter(grams)
+    most_occur = counter.most_common(20)
+    for occur in most_occur:
+        if n == 1:
+            f.write(occur[0] + "|" + str(occur[1]) + "\n")
+        else:
+            f.write(' '.join(map(str, occur[0])) + "|" + str(occur[1]) + "\n")
+    print(most_occur)
+    f.close()
+
+
+def ngrams_mystemed(reviews, uni, n):
     try:
         os.remove(tmp_all_reviews_file)
     except Exception:
@@ -60,12 +81,17 @@ def bag_of_words(reviews):
         mystemed_cleared_text = re.sub(r'[|].*?[ ]', ' ', mystemed_cleared_text)
         mystemed_cleared_text = re.sub(r'[?]', '', mystemed_cleared_text)
         append_file(tmp_all_reviews_file, mystemed_cleared_text)
-    data_set = read_file(tmp_all_reviews_file)
-    split_it = data_set.split()
-    split_it = list(filter(lambda x: x not in stopwords, split_it))
-    counter = Counter(split_it)
-    most_occur = counter.most_common(20)
-    print(most_occur)
+    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_mystem/" + uni + "_" + str(n) + ".csv")
+
+
+def ngrams_orig(reviews, uni, n):
+    try:
+        os.remove(tmp_all_reviews_file)
+    except Exception:
+        pass
+    for review in reviews:
+        append_file(tmp_all_reviews_file, review.text)
+    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_orig/" + uni + "_" + str(n) + ".csv")
 
 
 if __name__ == '__main__':
@@ -112,8 +138,16 @@ if __name__ == '__main__':
     print("\n")
     for uni_idx in range(0, len(university_list_tabiturient)):
         reviews = get_for_uni(conn, cursor, uni_idx)
-        print("Bag of words for uni", university_list_tabiturient[uni_idx])
-        bag_of_words(reviews)
+        uni = university_list_tabiturient[uni_idx]
+        print("N-grams Mystemed for uni", uni)
+        ngrams_mystemed(reviews, uni, 1)
+        ngrams_mystemed(reviews, uni, 2)
+        ngrams_mystemed(reviews, uni, 3)
+        ngrams_mystemed(reviews, uni, 4)
+        print("N-grams over original for uni", university_list_tabiturient[uni_idx])
+        ngrams_orig(reviews, uni, 2)
+        ngrams_orig(reviews, uni, 3)
+        ngrams_orig(reviews, uni, 4)
 
     close(conn)
     print("done")

@@ -56,9 +56,15 @@ def get_reviews_tabiturient(university, uni_idx):
         ratingTable = rating.table
         spans = ratingTable.findAll("tr")[0].findAll("td")
         points = spans[0]
-        date = spans[1]
+        date = spans[-1]
         points = points.img.attrs["src"]
-        date = date.findAll("span")[1].text
+        try:
+            date = date.findAll("span")[1].text.strip()
+            if (date[0] < '0') or (date[0] > '9'):
+                raise Exception()
+        except Exception:
+            print("weid date for review", date, "assuming review for this year")
+            date = "1 октября 2020"
         like = like.find("b").text
         trust = trust.findAll()[0].td.attrs["onclick"]
         reviews[i].date = parse_date(date.strip())

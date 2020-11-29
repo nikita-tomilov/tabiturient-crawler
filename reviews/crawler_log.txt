@@ -1,0 +1,96 @@
+/usr/bin/python3.8 /home/hotaro/ifmo/intellectual_data_analysis/tabiturient_crawler/reviews/main_for_crawler.py
+
+======
+Need to crawl for mifi
+weid date for review Позавчера assuming review for this year
+Tabiturient: Crawled 40 for mifi
+Vuz.edunetwork: Crawled 2 for 77/v366
+Ucheba-otzyv: Crawled 18 for 196
+MoeObrazovanie: Crawled 10 for mephi
+
+======
+Need to crawl for mipt
+Tabiturient: Crawled 14 for mipt
+Vuz.edunetwork: Crawled 1 for 77/v410
+Ucheba-otzyv: Crawled 18 for 783
+MoeObrazovanie: Crawled 5 for mipt
+
+======
+Need to crawl for hse
+Tabiturient: Crawled 65 for hse
+Vuz.edunetwork: Crawled 3 for 77/v109
+Ucheba-otzyv: Crawled 18 for 289
+MoeObrazovanie: Crawled 4 for guvshe
+
+======
+Need to crawl for itmo
+Tabiturient: Crawled 29 for itmo
+Vuz.edunetwork: Crawled 0 for 78/v564
+Ucheba-otzyv: Crawled 12 for 1339
+MoeObrazovanie: Crawled 7 for ifmo
+
+======
+Need to crawl for spbstu
+Tabiturient: Crawled 53 for spbstu
+Vuz.edunetwork: Crawled 27 for 78/v567
+Ucheba-otzyv: Crawled 18 for 1293
+MoeObrazovanie: Crawled 9 for spbstu
+
+======
+Need to crawl for eltech
+Tabiturient: Crawled 20 for eltech
+Vuz.edunetwork: Crawled 0 for 78/v574
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 3 for eltech
+
+======
+Need to crawl for urfu
+Tabiturient: Crawled 40 for urfu
+Vuz.edunetwork: Crawled 21 for 66/11/v689
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 6 for ustu
+
+======
+Need to crawl for susu
+Tabiturient: Crawled 4 for susu
+Vuz.edunetwork: Crawled 13 for 74/58/v720
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 17 for yuugu
+
+======
+Need to crawl for kantiana
+Tabiturient: Crawled 11 for kantiana
+Vuz.edunetwork: Crawled 1 for 39/15/v256
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 0 for kantiana
+
+======
+Need to crawl for dvfu
+Tabiturient: Crawled 15 for dvfu
+Vuz.edunetwork: Crawled 1 for 25/5/v793
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 3 for dalgtu
+
+======
+Need to crawl for sfu
+Tabiturient: Crawled 4 for sfu
+Vuz.edunetwork: Crawled 6 for 24/21/v286
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 6 for sfukras
+
+======
+Need to crawl for nsu
+Tabiturient: Crawled 18 for nsu
+Vuz.edunetwork: Crawled 3 for 54/32/v444
+Ucheba-otzyv: Crawled 0 for not-present
+MoeObrazovanie: Crawled 7 for nsu
+
+======
+Need to crawl for tpu
+Tabiturient: Crawled 1 for tpu
+Vuz.edunetwork: Crawled 6 for 70/50/v654
+Ucheba-otzyv: Crawled 1 for 1018
+MoeObrazovanie: Crawled 0 for nitpu
+done
+
+Process finished with exit code 0

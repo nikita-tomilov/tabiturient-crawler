@@ -2,6 +2,7 @@ import datetime
 import locale
 
 import requests
+import urllib3
 from bs4 import BeautifulSoup
 
 from reviews.comment import Comment
@@ -27,7 +28,14 @@ def get_reviews_uchebaotzyv(university, uni_idx):
     if university == "not-present":
         return []
     url = "https://ucheba-otziv.ru/opinion/opinion_" + university + ".html"
-    rp = requests.get(url)
+    requests.packages.urllib3.disable_warnings()
+    requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
+    try:
+        requests.packages.urllib3.contrib.pyopenssl.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
+    except AttributeError:
+        # no pyopenssl support used / needed / available
+        pass
+    rp = requests.get(url, verify=False)
     html = rp.text
     soup = BeautifulSoup(html, 'html.parser')
     opinions = soup.findAll("td", {"class": "short_descr"})

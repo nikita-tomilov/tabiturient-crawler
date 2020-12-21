@@ -1,3 +1,4 @@
 .idea/
 *.iml
 __pycache__/
+articles/scopus_info/

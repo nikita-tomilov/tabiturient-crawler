@@ -16,10 +16,10 @@ def init(dbfilename: str):
     return conn, cursor
 
 
-def get_articles_count(conn, cursor, uni, year):
+def get_articles_count(conn, cursor, uni, type, year):
     cursor.execute("""
-                SELECT article_count FROM ArticlesCount WHERE university LIKE ? AND article_year = ?;
-            """, (uni,year,))
+                SELECT article_count FROM ArticlesCount WHERE university LIKE ? AND article_type LIKE ? AND article_year = ?;
+            """, (uni,type,year,))
     rows = cursor.fetchall()
     ans = 0
     for i in range(0, len(rows)):
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         uni = university_list[uni_idx]
         print(university_list[uni_idx] + ",", end='')
         for year in years:
-            articles_count = get_articles_count(conn, cursor, uni, year)
+            articles_count = get_articles_count(conn, cursor, uni, "scopus", year)
             print(articles_count, ",", sep='', end='')
         print()
 

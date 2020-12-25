@@ -2,6 +2,7 @@
 import sqlite3
 
 from articles.parse_scopus import parse_scopus_csv
+from articles.parse_wos import parse_wos_csv
 
 
 def init(dbfilename: str):
@@ -22,4 +23,5 @@ def init(dbfilename: str):
 if __name__ == '__main__':
     conn, cursor = init("db.sqlite")
     #parse_scopus_csv(conn, cursor)
+    parse_wos_csv(conn, cursor)
     conn.close()

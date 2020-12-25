@@ -2,3 +2,6 @@
 *.iml
 __pycache__/
 articles/scopus_info/
+articles/wos_info/
+articles/wos_rcsi_kernel_info/
+articles/elibrary/

@@ -28,21 +28,22 @@ def get_articles_count(conn, cursor, uni, type, year):
 
 
 if __name__ == '__main__':
-    years = range(2000, 2020)
+    years = range(2000, 2022)
     conn, cursor = init("db.sqlite")
 
-    print("Articles per year:")
-    print("uni,", end='')
-    for year in years:
-        print(year, ",", sep='', end='')
-    print()
-
-    for uni_idx in range(0, len(university_list)):
-        uni = university_list[uni_idx]
-        print(university_list[uni_idx] + ",", end='')
+    types = ["scopus", "wos"]
+    for type in types:
+        print("\n\nArticles per year for type " + type + ":")
+        print("uni,", end='')
         for year in years:
-            articles_count = get_articles_count(conn, cursor, uni, "scopus", year)
-            print(articles_count, ",", sep='', end='')
+            print(year, ",", sep='', end='')
         print()
+        for uni_idx in range(0, len(university_list)):
+            uni = university_list[uni_idx]
+            print(university_list[uni_idx] + ",", end='')
+            for year in years:
+                articles_count = get_articles_count(conn, cursor, uni, type, year)
+                print(articles_count, ",", sep='', end='')
+            print()
 
     print("done")

@@ -31,7 +31,7 @@ if __name__ == '__main__':
     years = range(2000, 2022)
     conn, cursor = init("db.sqlite")
 
-    types = ["scopus", "wos"]
+    types = ["scopus", "wos", "rints", "rints_kernel"]
     for type in types:
         print("\n\nArticles per year for type " + type + ":")
         print("uni,", end='')

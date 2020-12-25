@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3
 
+from articles.parse_elib import parse_elib_html
 from articles.parse_scopus import parse_scopus_csv
 from articles.parse_wos import parse_wos_csv
 
@@ -23,5 +24,6 @@ def init(dbfilename: str):
 if __name__ == '__main__':
     conn, cursor = init("db.sqlite")
     #parse_scopus_csv(conn, cursor)
-    parse_wos_csv(conn, cursor)
+    #parse_wos_csv(conn, cursor)
+    #parse_elib_html(conn, cursor)
     conn.close()

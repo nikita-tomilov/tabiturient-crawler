@@ -48,19 +48,19 @@ if __name__ == '__main__':
     conn, cursor = init("db.sqlite")
 
     uni_to_parse_id = (
-        "mifi", "mipt", "hse",
-        #"spbstu", "eltech",  # "itmo",
-        #"urfu", "susu", "kantiana",
-        #"dvfu", "sfu", "nsu", "tpu",
-        #"tsu", "extra_baumanka", "extra_spbsu", "extra_msu"
+        # "mifi", "mipt", "hse",
+        "spbstu", "eltech", "tsu",  # "itmo",
+        # "urfu", "susu", "kantiana",
+        # "dvfu", "sfu", "nsu", "tpu",
+        # "extra_baumanka", "extra_spbsu", "extra_msu"
     )
 
     uni_to_parse_human = (
-        "МИФИ", "МФТИ", "ВШЭ",
-        #"СПБПУ", "ЛЭТИ",  # "ИТМО",
-        #"УРФУ", "ЮУРГУ", "БФУ",
-        #"ДВФУ", "СФУ", "НГУ", "ТПУ",
-        #"ТГУ", "МГТУ Баумана", "СПБГУ", "МГУ"
+        # "МИФИ", "МФТИ", "ВШЭ",
+        "СПБПУ", "ЛЭТИ", "ТГУ"  # "ИТМО",
+        # "УРФУ", "ЮУРГУ", "БФУ",
+        # "ДВФУ", "СФУ", "НГУ", "ТПУ",
+        # "МГТУ Баумана", "СПБГУ", "МГУ"
     )
 
     for ui in range(0, len(uni_to_parse_id)):

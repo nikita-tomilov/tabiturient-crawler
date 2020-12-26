@@ -38,15 +38,38 @@ def save(uni_id, year, r):
 
 
 def scrape(uni_id, uni_human, year):
-    print("\n\nstarting for " + uni_human + " aka " + uni_id + ", year " + str(year))
+    print(" starting for " + uni_human + " aka " + uni_id + ", year " + str(year))
     r = retrieve(uni_human, year)
     save(uni_id, year, r)
-    print("done for " + uni_human + " aka " + uni_id + ", year " + str(year))
+    print(" done for " + uni_human + " aka " + uni_id + ", year " + str(year))
 
 
 if __name__ == '__main__':
     conn, cursor = init("db.sqlite")
-    for year in range(2010, 2021):
-        scrape("itmo", "ИТМО", year)
-        time.sleep(5)
+
+    uni_to_parse_id = (
+        "mifi", "mipt", "hse",
+        #"spbstu", "eltech",  # "itmo",
+        #"urfu", "susu", "kantiana",
+        #"dvfu", "sfu", "nsu", "tpu",
+        #"tsu", "extra_baumanka", "extra_spbsu", "extra_msu"
+    )
+
+    uni_to_parse_human = (
+        "МИФИ", "МФТИ", "ВШЭ",
+        #"СПБПУ", "ЛЭТИ",  # "ИТМО",
+        #"УРФУ", "ЮУРГУ", "БФУ",
+        #"ДВФУ", "СФУ", "НГУ", "ТПУ",
+        #"ТГУ", "МГТУ Баумана", "СПБГУ", "МГУ"
+    )
+
+    for ui in range(0, len(uni_to_parse_id)):
+        uni_id = uni_to_parse_id[ui]
+        uni_human = uni_to_parse_human[ui]
+        print("Starting for " + uni_human + " aka " + uni_id)
+        for year in range(2010, 2021):
+            scrape(uni_id, uni_human, year)
+            time.sleep(5)
+        print("Done for " + uni_human + " aka " + uni_id)
+        time.sleep(30)
     conn.close()

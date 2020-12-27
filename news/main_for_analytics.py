@@ -97,7 +97,7 @@ def ngrams_over_file(sourcefile, n, targetfile):
     f.close()
 
 
-def ngrams_mystemed(reviews, uni, n):
+def ngrams_mystemed(reviews, uni, n, year):
     try:
         os.remove(tmp_all_reviews_file)
     except Exception:
@@ -110,17 +110,17 @@ def ngrams_mystemed(reviews, uni, n):
         mystemed_cleared_text = re.sub(r'[|].*?[ ]', ' ', mystemed_cleared_text)
         mystemed_cleared_text = re.sub(r'[?]', '', mystemed_cleared_text)
         append_file(tmp_all_reviews_file, mystemed_cleared_text)
-    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_mystem/" + uni + "_" + str(n) + ".csv")
+    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_mystem/" + uni + "_" + str(year) + "_" + str(n) + ".csv")
 
 
-def ngrams_orig(reviews, uni, n):
+def ngrams_orig(reviews, uni, n, year):
     try:
         os.remove(tmp_all_reviews_file)
     except Exception:
         pass
     for review in reviews:
         append_file(tmp_all_reviews_file, review)
-    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_orig/" + uni + "_" + str(n) + ".csv")
+    ngrams_over_file(tmp_all_reviews_file, n, "./ngrams_orig/" + uni + "_" + str(year) + "_" + str(n) + ".csv")
 
 
 if __name__ == '__main__':
@@ -136,8 +136,9 @@ if __name__ == '__main__':
         for year in range(2010, 2021):
             entries = get_entries_for_uni(conn, cursor, uni, year)
             strg = strg + str(len(entries)) + ";"
+            for count in range(1, 4):
+               ngrams_mystemed(entries, uni, count, year)
+               ngrams_orig(entries, uni, count, year)
         print(strg)
-            # for count in range(1, 4):
-            #    ngrams_mystemed(entries, uni, count)
-            #    ngrams_orig(entries, uni, count)
+
     conn.close()

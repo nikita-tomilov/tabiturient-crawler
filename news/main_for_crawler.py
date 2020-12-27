@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     uni_to_parse_id = (
         # "mifi", "mipt", "hse",
-        "spbstu", "eltech", "tsu",  # "itmo",
+        # "spbstu", "eltech", "tsu",  # "itmo",
         # "urfu", "susu", "kantiana",
         # "dvfu", "sfu", "nsu", "tpu",
         # "extra_baumanka", "extra_spbsu", "extra_msu"
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     uni_to_parse_human = (
         # "МИФИ", "МФТИ", "ВШЭ",
-        "СПБПУ", "ЛЭТИ", "ТГУ"  # "ИТМО",
+        # "СПБПУ", "ЛЭТИ", "ТГУ"  # "ИТМО",
         # "УРФУ", "ЮУРГУ", "БФУ",
         # "ДВФУ", "СФУ", "НГУ", "ТПУ",
         # "МГТУ Баумана", "СПБГУ", "МГУ"

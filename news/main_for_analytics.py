@@ -127,12 +127,17 @@ if __name__ == '__main__':
     conn, cursor = init("db.sqlite")
 
     uni_list = get_university_list(conn, cursor)
+    strg = "uni;"
+    for year in range(2010, 2021):
+        strg = strg + str(year) + ";"
+    print(strg)
     for uni in uni_list:
-        print("\n\nUNI: " + uni)
+        strg = uni + ";"
         for year in range(2010, 2021):
-            print(" year " + str(year))
             entries = get_entries_for_uni(conn, cursor, uni, year)
-            for count in range(1, 4):
-                ngrams_mystemed(entries, uni, count)
-                ngrams_orig(entries, uni, count)
+            strg = strg + str(len(entries)) + ";"
+        print(strg)
+            # for count in range(1, 4):
+            #    ngrams_mystemed(entries, uni, count)
+            #    ngrams_orig(entries, uni, count)
     conn.close()
